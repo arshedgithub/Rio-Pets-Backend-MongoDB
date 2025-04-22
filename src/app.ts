@@ -7,6 +7,8 @@ dotenv.config();
 
 import connectDB from './config/database';
 
+import adRoutes from './routes/ad.routes';
+
 // Initialize express app
 const app: Application = express();
 
@@ -17,6 +19,8 @@ app.use(cors());
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use('/api/ads', adRoutes);
 
 // Start server
 const PORT = process.env.PORT || 3000;

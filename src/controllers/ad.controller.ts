@@ -1,28 +1,35 @@
 import { Request, Response } from 'express';
 import * as adService from '../services/ad.service';
 
-export const createAd = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const ad = await adService.createAd(
-      {
-        title: req.body.title,
-        description: req.body.description,
-        price: parseFloat(req.body.price),
-        location: req.body.location,
-      },
-    );
+// export const createAd = async (req: Request, res: Response): Promise<void> => {
+//   try {
     
-    res.status(201).json(ad);
-  } catch (error) {
-    res.status(400).json({
-      message: error instanceof Error ? error.message : 'Failed to create ad'
-    });
-  }
-};
+//     const ad = await adService.createAd(
+//       {
+//         title: req.body.title,
+//         description: req.body.description,
+//         price: parseFloat(req.body.price),
+//         location: req.body.location,
+//       },
+//     );
+    
+//     res.status(201).json(ad);
+//   } catch (error) {
+//     res.status(400).json({
+//       message: error instanceof Error ? error.message : 'Failed to create ad'
+//     });
+//   }
+// };
 
 export const getAds = async (req: Request, res: Response): Promise<void> => {
   try {
-    const ads = await adService.getAds();
+    const filters = { ...req.query };
+    
+    delete filters.page;
+    delete filters.limit;
+    delete filters.sort;
+    
+    const ads = await adService.getAds(filters);
     res.status(200).json(ads);
   } catch (error) {
     res.status(500).json({
