@@ -1,21 +1,13 @@
+import { IAd } from '../interfaces';
 import Ad, { AdDocument } from '../models/Ad';
 
-// export const createAd = async (): Promise<AdDocument> => {
+export const createAd = async (adData: IAd): Promise<AdDocument> => {
+    const ad = new Ad(adData);
 
-//     const ad = new Ad({
-//         ...adData,
-//         images: imageUrls,
-//     });
+    await ad.save();
+    return ad;
 
-//     await ad.save();
-
-//     // Decrease coin balance by 1
-//     coinBalance.coins -= 1;
-//     coinBalance.lastUpdated = new Date();
-//     await coinBalance.save();
-
-//     return ad;
-// };
+};
 
 export const getAds = async (query: any = {}): Promise<AdDocument[]> => {
     return Ad.find(query)

@@ -4,5 +4,6 @@ import * as adController from '../controllers/ad.controller'
 
 router.get('/', adController.getAds);
 router.get('/:id', adController.getAdById);
+router.post('/', adController.createAd);
 
 export default router;
