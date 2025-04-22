@@ -1,0 +1,8 @@
+import express from 'express';
+const router = express.Router();
+import * as adController from '../controllers/ad.controller'
+
+router.get('/', adController.getAds);
+router.get('/:id', adController.getAdById);
+
+export default router;
