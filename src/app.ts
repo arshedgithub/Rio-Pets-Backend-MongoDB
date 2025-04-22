@@ -5,8 +5,12 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+import connectDB from './config/database';
+
 // Initialize express app
 const app: Application = express();
+
+connectDB();
 
 // Middleware
 app.use(cors());
