@@ -1,11 +1,11 @@
 export interface IUser {
     _id?: string;
     name: string;
-    email: string;
+    username: string;
     password: string;
-    role: 'seller' | 'buyer';
-    phone?: string;
-    location?: string;
+    role: 'admin' | 'seller' | 'buyer';
+    phone: string;
+    location: string;
     createdAt?: Date;
     updatedAt?: Date;
   }
