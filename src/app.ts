@@ -8,6 +8,8 @@ dotenv.config();
 import connectDB from './config/database';
 
 import adRoutes from './routes/ad.routes';
+import coinRoutes from './routes/coin.routes';
+import authRoutes from './routes/auth.routes';
 import { errorHandler } from './middlewares/error';
 
 const app: Application = express();
@@ -20,8 +22,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/ads', adRoutes);
-app.use('/api/ads', adRoutes);
-app.use('/api/ads', adRoutes);
+app.use('/api/coins', coinRoutes);
+app.use('/api/auth', authRoutes);
 
 app.use(errorHandler);
 
