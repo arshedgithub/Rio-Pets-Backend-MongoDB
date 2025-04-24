@@ -22,3 +22,20 @@ export const login = async (req: Request, res: Response): Promise<void> => {
     });
   }
 };
+
+export const getCurrentUser = async (req: Request, res: Response): Promise<void> => {
+  try {
+    res.status(200).json({
+      user: {
+        id: req.user._id,
+        name: req.user.name,
+        username: req.user.username,
+        role: req.user.role
+      }
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error instanceof Error ? error.message : 'Server error'
+    });
+  }
+};
