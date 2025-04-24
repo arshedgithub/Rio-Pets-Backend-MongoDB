@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document } from 'mongoose';
-import { IUser } from '../types/interfaces';
+import { IUser } from '../types';
 
 export interface UserDocument extends Omit<IUser, '_id'>, Document {}
 

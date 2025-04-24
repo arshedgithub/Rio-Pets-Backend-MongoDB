@@ -1,6 +1,6 @@
 import express from 'express';
 import * as coinController from '../controllers/coin.controller';
-import { authenticate, authorizeRoles } from '../middlewares/auth';
+import { authenticate, authorizeRoles } from '../middlewares';
 
 const router = express.Router();
 

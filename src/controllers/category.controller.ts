@@ -1,8 +1,11 @@
 import { Request, Response } from 'express';
+import { ICategory } from '../types';
+import * as categoryService from '../services/category.service';
 
 // Get all categories
 export const getAllCategories = async (req: Request, res: Response): Promise<void> => {
   try {
+    const categories = await categoryService.getCategories();
     res.status(200).json(categories);
   } catch (error) {
     res.status(500).json({
@@ -14,6 +17,7 @@ export const getAllCategories = async (req: Request, res: Response): Promise<voi
 // Get category by ID
 export const getCategoryById = async (req: Request, res: Response): Promise<void> => {
   try {
+    const category = await categoryService.getCategoryById(req.params.id);
     
     if (!category) {
       res.status(404).json({ message: 'Category not found' });
@@ -31,7 +35,8 @@ export const getCategoryById = async (req: Request, res: Response): Promise<void
 // Create new category
 export const createCategory = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { name, subcategories } = req.body;
+    const categoryData: ICategory = req.body;
+    const category = await categoryService.createCategory(categoryData);
     
     res.status(201).json(category);
   } catch (error) {
@@ -44,11 +49,7 @@ export const createCategory = async (req: Request, res: Response): Promise<void>
 // Update category
 export const updateCategory = async (req: Request, res: Response): Promise<void> => {
   try {
-    const category = await Category.findByIdAndUpdate(
-      req.params.id,
-      { $set: req.body },
-      { new: true }
-    );
+    const category = await categoryService.updateCategory(req.params.id, req.body);
     
     if (!category) {
       res.status(404).json({ message: 'Category not found' });
@@ -63,12 +64,11 @@ export const updateCategory = async (req: Request, res: Response): Promise<void>
   }
 };
 
+// Delete category
 export const deleteCategory = async (req: Request, res: Response): Promise<void> => {
   try {
-    const category = await Category.findByIdAndDelete(req.params.id);
+    const category = await categoryService.deleteCategory(req.params.id);
     
-    // should check is there any ads in this subcategory, if yes it should be assigned to some other category
-
     if (!category) {
       res.status(404).json({ message: 'Category not found' });
       return;
