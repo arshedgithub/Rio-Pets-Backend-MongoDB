@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document } from 'mongoose';
-import { IAd } from '../interfaces';
+import { IAd } from '../types/interfaces';
 
 export interface AdDocument extends Omit<IAd, '_id'>, Document {}
 

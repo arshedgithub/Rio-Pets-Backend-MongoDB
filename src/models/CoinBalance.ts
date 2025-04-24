@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document } from 'mongoose';
-import { ICoinBalance } from '../interfaces';
+import { ICoinBalance } from '../types/interfaces';
 
 export interface CoinBalanceDocument extends Omit<ICoinBalance, '_id'>, Document {}
 

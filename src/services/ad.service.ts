@@ -1,4 +1,4 @@
-import { IAd } from '../interfaces';
+import { IAd } from '../types/interfaces';
 import Ad, { AdDocument } from '../models/Ad';
 
 export const createAd = async (adData: IAd): Promise<AdDocument> => {

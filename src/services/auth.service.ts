@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import User, { UserDocument } from '../models/User';
-import { RegisterUserInput, LoginUserInput, AuthResponse } from '../interfaces/IAuth';
+import { RegisterUserInput, LoginUserInput, AuthResponse } from '../types/interfaces/IAuth';
 import * as coinService from './coin.service';
 
 export const registerUser = async (userData: RegisterUserInput): Promise<AuthResponse> => {
