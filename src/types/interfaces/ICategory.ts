@@ -1,7 +1,7 @@
-import { CategoryTypes } from "../enums";
+import { CATEGORY_TYPES } from "../enums";
 
 export interface ICategory {
     _id?: string;
     name: string;
-    type: CategoryTypes;
+    type: CATEGORY_TYPES;
 }

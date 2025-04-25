@@ -1,7 +1,8 @@
-export enum CategoryTypes {
-    pets = "Pets",
-    petSupplies = "Pet Supplies",
-    petAccessories = "Pet Accessoris",
-    service = "Pet Services",
-    petShops = "Pet Shops"
+export enum CATEGORY_TYPES {
+    PETS = "Pets",
+    PET_SUPPLIES = "Pet Supplies",
+    PET_ACCESSORIES = "Pet Accessoris",
+    PET_SERVICES = "Pet Services",
+    PET_SHOPS = "Pet Shops",
+    PET_BLOGS = "Pet Blogs"
 }
