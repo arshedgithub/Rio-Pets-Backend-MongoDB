@@ -1,5 +1,6 @@
-import { IAd } from '../types/interfaces';
 import Ad, { AdDocument } from '../models/Ad';
+import mongoose from 'mongoose';
+import { IAd } from '../types';
 
 export const createAd = async (adData: IAd): Promise<AdDocument> => {
     const ad = new Ad(adData);
@@ -20,6 +21,6 @@ export const getAdById = async (id: string): Promise<AdDocument | null> => {
     return Ad.findById(id)
 };
 
-export const deleteAd = async (id: string, sellerId: string): Promise<AdDocument | null> => {
-    return Ad.findOneAndDelete({ _id: id, sellerId });
+export const deleteAd = async (id: string): Promise<AdDocument | null> => {
+    return Ad.findOneAndDelete({ _id: id });
 };

@@ -65,10 +65,10 @@ export const getAdById = async (req: Request, res: Response): Promise<void> => {
 
 export const deleteAd = async (req: Request, res: Response): Promise<void> => {
   try {
-    const ad = await adService.deleteAd(req.params.id, req.user._id);
-    
+    const ad = await adService.deleteAd(req.params.id);
+
     if (!ad) {
-      res.status(404).json({ message: 'Ad not found or you are not authorized to delete it' });
+      res.status(404).json({ message: 'Ad not found' });
       return;
     }
     
