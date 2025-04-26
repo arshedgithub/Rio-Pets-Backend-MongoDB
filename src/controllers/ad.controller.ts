@@ -3,9 +3,7 @@ import * as adService from '../services/ad.service';
 
 export const createAd = async (req: Request, res: Response): Promise<void> => {
   try {
-
-    const { title, description, price, images, delivery, location, type, featured, available } = req.body;
-
+    const { title, description, price, images, delivery, location, petType, featured, available } = req.body;
     const ad = await adService.createAd(
       {
         title: title,
@@ -14,7 +12,7 @@ export const createAd = async (req: Request, res: Response): Promise<void> => {
         images: images,
         delivery: delivery,
         location: location,
-        petType: type,
+        petType: petType,
         seller: req.user._id,
         featured: featured,
         available: available,

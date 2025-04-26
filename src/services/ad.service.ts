@@ -1,10 +1,8 @@
 import Ad, { AdDocument } from '../models/Ad';
-import mongoose from 'mongoose';
 import { IAd } from '../types';
 
 export const createAd = async (adData: IAd): Promise<AdDocument> => {
     const ad = new Ad(adData);
-
     await ad.save();
     return ad;
 
