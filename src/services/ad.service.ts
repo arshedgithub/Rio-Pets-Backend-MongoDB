@@ -19,3 +19,7 @@ export const getAds = async (query: any = {}): Promise<AdDocument[]> => {
 export const getAdById = async (id: string): Promise<AdDocument | null> => {
     return Ad.findById(id)
 };
+
+export const deleteAd = async (id: string, sellerId: string): Promise<AdDocument | null> => {
+    return Ad.findOneAndDelete({ _id: id, sellerId });
+};
